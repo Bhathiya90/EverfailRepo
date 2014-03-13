@@ -16,7 +16,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('invoice_show', { 'id': entity.id }) }}">{{ entity.paymentDate }}</a></td>
+                <td><a href="{{ path('invoice_show', { 'id': entity.id }) }}">{{ entity.paymentDate|date("m/d/Y") }}</a></td>
                 <td>{{ entity.paymentStatus }}</td>
                 <td>{{ entity.paymentMethod }}</td>
                 <td>{{ entity.id }}</td>

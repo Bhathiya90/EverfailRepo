@@ -16,7 +16,7 @@
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('service_show', { 'id': entity.id }) }}">{{ entity.serviceDate }}</a></td>
+                <td><a href="{{ path('service_show', { 'id': entity.id }) }}">{{ entity.serviceDate|date("m/d/Y") }}</a></td>
                 <td>{{ entity.serviceCharge }}</td>
                 <td>{{ entity.note }}</td>
                 <td>{{ entity.id }}</td>
