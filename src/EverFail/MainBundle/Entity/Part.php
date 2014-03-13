@@ -164,4 +164,8 @@ class Part
     {
         return $this->service;
     }
+    
+    public function __toString() {
+        return "$this->partName";;
+    }
 }

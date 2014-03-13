@@ -192,4 +192,9 @@ class Service
     {
         return $this->invoice;
     }
+    
+    public function __toString() {
+        return "$this->id";
+    }
+    
 }
