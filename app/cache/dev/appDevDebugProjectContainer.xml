@@ -2425,6 +2425,7 @@
             <argument type="collection">
               <argument key="EverFailMainBundle">EverFail\MainBundle\Entity</argument>
               <argument key="FOSUserBundle">FOS\UserBundle\Entity</argument>
+              <argument key="EverFailUserAuthBundle">EverFail\UserAuthBundle\Entity</argument>
             </argument>
           </call>
           <call method="setMetadataCacheImpl">
@@ -2484,6 +2485,19 @@
                     </service>
                   </argument>
                   <argument>FOS\UserBundle\Entity</argument>
+                </call>
+                <call method="addDriver">
+                  <argument type="service">
+                    <service class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
+                      <argument type="collection">
+                        <argument key="C:\wamp\www\EverfailRepo\src\EverFail\UserAuthBundle\Resources\config\doctrine">EverFail\UserAuthBundle\Entity</argument>
+                      </argument>
+                      <call method="setGlobalBasename">
+                        <argument>mapping</argument>
+                      </call>
+                    </service>
+                  </argument>
+                  <argument>EverFail\UserAuthBundle\Entity</argument>
                 </call>
                 <call method="addDriver">
                   <argument type="service">

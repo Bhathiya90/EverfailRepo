@@ -671,25 +671,29 @@ class appDevDebugProjectContainer extends Container
         $d = new \Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver(array('C:\\wamp\\www\\EverfailRepo\\src\\EverFail\\MainBundle\\Resources\\config\\doctrine' => 'EverFail\\MainBundle\\Entity', 'C:\\wamp\\www\\EverfailRepo\\src\\FOS\\UserBundle\\Resources\\config\\doctrine' => 'FOS\\UserBundle\\Entity'));
         $d->setGlobalBasename('mapping');
 
-        $e = new \Doctrine\ORM\Mapping\Driver\DriverChain();
-        $e->addDriver($d, 'EverFail\\MainBundle\\Entity');
-        $e->addDriver($d, 'FOS\\UserBundle\\Entity');
-        $e->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('C:\\wamp\\www\\EverfailRepo\\src\\FOS\\UserBundle\\Resources\\config\\doctrine\\model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
+        $e = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver(array('C:\\wamp\\www\\EverfailRepo\\src\\EverFail\\UserAuthBundle\\Resources\\config\\doctrine' => 'EverFail\\UserAuthBundle\\Entity'));
+        $e->setGlobalBasename('mapping');
 
-        $f = new \Doctrine\ORM\Configuration();
-        $f->setEntityNamespaces(array('EverFailMainBundle' => 'EverFail\\MainBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity'));
-        $f->setMetadataCacheImpl($a);
-        $f->setQueryCacheImpl($b);
-        $f->setResultCacheImpl($c);
-        $f->setMetadataDriverImpl($e);
-        $f->setProxyDir('C:/wamp/www/EverfailRepo/app/cache/dev/doctrine/orm/Proxies');
-        $f->setProxyNamespace('Proxies');
-        $f->setAutoGenerateProxyClasses(true);
-        $f->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
-        $f->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
-        $f->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+        $f = new \Doctrine\ORM\Mapping\Driver\DriverChain();
+        $f->addDriver($d, 'EverFail\\MainBundle\\Entity');
+        $f->addDriver($d, 'FOS\\UserBundle\\Entity');
+        $f->addDriver($e, 'EverFail\\UserAuthBundle\\Entity');
+        $f->addDriver(new \Doctrine\ORM\Mapping\Driver\XmlDriver(new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(array('C:\\wamp\\www\\EverfailRepo\\src\\FOS\\UserBundle\\Resources\\config\\doctrine\\model' => 'FOS\\UserBundle\\Model'), '.orm.xml')), 'FOS\\UserBundle\\Model');
 
-        $this->services['doctrine.orm.default_entity_manager'] = $instance = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $f);
+        $g = new \Doctrine\ORM\Configuration();
+        $g->setEntityNamespaces(array('EverFailMainBundle' => 'EverFail\\MainBundle\\Entity', 'FOSUserBundle' => 'FOS\\UserBundle\\Entity', 'EverFailUserAuthBundle' => 'EverFail\\UserAuthBundle\\Entity'));
+        $g->setMetadataCacheImpl($a);
+        $g->setQueryCacheImpl($b);
+        $g->setResultCacheImpl($c);
+        $g->setMetadataDriverImpl($f);
+        $g->setProxyDir('C:/wamp/www/EverfailRepo/app/cache/dev/doctrine/orm/Proxies');
+        $g->setProxyNamespace('Proxies');
+        $g->setAutoGenerateProxyClasses(true);
+        $g->setClassMetadataFactoryName('Doctrine\\ORM\\Mapping\\ClassMetadataFactory');
+        $g->setDefaultRepositoryClassName('Doctrine\\ORM\\EntityRepository');
+        $g->setNamingStrategy(new \Doctrine\ORM\Mapping\DefaultNamingStrategy());
+
+        $this->services['doctrine.orm.default_entity_manager'] = $instance = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $g);
 
         $this->get('doctrine.orm.default_manager_configurator')->configure($instance);
 
