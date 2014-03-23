@@ -15,9 +15,16 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('regNumber', 'text', array('label' => 'Registration Number'))
-            ->add('model', 'text', array('label' => 'Model'))
-            ->add('manufactureYear', 'date', array('label' => 'Year of Manufacture'))
+            ->add('regNumber', 'text', array('label' => 'Registration Number',
+                'attr' =>array('placeholder'=>'AB-1234')))
+            ->add('search','search',array(
+                'class'=>'EverFailMainBundle:Car',
+                'property'=>'regNumber'
+            ))
+            ->add('model', 'text', array('label' => 'Model',
+                'attr' =>array('placeholder'=>'Eg : Toyota')))
+            ->add('manufactureYear', 'date', array('label' => 'Year of Manufacture',
+                'widget'=>'single_text'))
         ;
     }
     

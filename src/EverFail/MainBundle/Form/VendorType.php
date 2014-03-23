@@ -16,7 +16,7 @@ class VendorType extends AbstractType
     {
         $builder
             ->add('vendorName', null, array('label' => 'Name'))
-            ->add('email', null, array('label' => 'E-mail Address'))
+            ->add('email', 'email', array('label' => 'E-mail Address'))
         ;
     }
     
