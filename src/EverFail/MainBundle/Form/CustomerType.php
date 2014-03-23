@@ -16,7 +16,7 @@ class CustomerType extends AbstractType
     {
         $builder
             ->add('custName', null, array('label' => 'Name'))
-            ->add('email', null, array('label' => 'E-mail Address'))
+            ->add('email', 'email', array('label' => 'E-mail Address'))
         ;
     }
     
