@@ -7,7 +7,8 @@
 namespace EverFail\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use 
+use EverFail\MainBundle\Form\CustomerRegistrationType;
+use Symfony\Component\HttpFoundation\Request;
 
 class InitialRegistrationController extends Controller
 {
@@ -16,20 +17,27 @@ class InitialRegistrationController extends Controller
         return $this->render('EverFailMainBundle:Default:index.html.twig');
     }
     
-    public function registerCarAction(){
-        $em = $this->getDoctrine()->getEntityManager();
-        $form = $this->createForm(new searchType());
+  
+    public function registerCustomerAction(Request $request)
+    {   
+        $form = $this->createForm(new CustomerRegistrationType());
         $form->handleRequest($request);
-        $id = $request->get('id');
-        if ($form->isValid()) {
-            $data = $form->getData();
-            $name = $data['firstname'];
+        if($form->isValid()){
+            $data =$form->getData();
+            $name=$data['name'];
             $em =$this->getDoctrine()->getEntityManager();
-            $repository =$em->getRepository('VolunteerManagementSystemRegistrationBundle:User');
+            $repository =$em->getRepository('EverFailMainBundle:Customer');
             $result = $repository->findBy(array('firstname'=>$name));
-            return $this->render('VolunteerManagementSystemPagesBundle:Result:result.html.twig', array('form' => $form->createView(),'result' => $result,'id'=>$id));
+            if ($result != null) {
+                return $this->render('EverFailMainBundle:Result:customerRegistration.html.twig', array('form' => $form->createView(), 'result' => $result));
+            } else {
+                return $this->render('EverFailMainBundle:initialRegistration:customerRegistration.html.twig');
+            }
         }
-        return $this->render('EverFailMainBundle:Default:index.html.twig');
+        return $this->render('EverFailMainBundle:Customer:index.html.twig');
+        }
+        
+        
+ 
     }
-}
 ?>

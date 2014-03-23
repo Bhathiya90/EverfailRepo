@@ -25,3 +25,6 @@ EverFailMainBundle_service:
 EverFailMainBundle_vendor:
         resource: "@EverFailMainBundle/Resources/config/routing/vendor.yml"
         prefix:   /vendor
+Customer_Search:
+         pattern:  /customerSearch
+         defaults: { _controller: "EverFailMainBundle:initialRegistration:registerCustomer" }

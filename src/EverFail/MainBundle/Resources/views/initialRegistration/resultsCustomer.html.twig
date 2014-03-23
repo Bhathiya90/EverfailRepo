@@ -1,0 +1,16 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Volma - Contacts{% endblock %}
+{% block selectcontacts %} class="active" {%endblock%}
+
+{% block body %}
+  <section class="container">
+    <div class="notify">
+        <table width=90%>
+        <h1>Search Reults</h1>
+    {% for res in result %}
+        <tr><td>
+        <strong>{{ res.getFirstname() }}&nbsp;{{ res.getLastname() }}</strong><br></td></tr>
+{% endfor %}  </table>
+</div></section>
+{% endblock %}
