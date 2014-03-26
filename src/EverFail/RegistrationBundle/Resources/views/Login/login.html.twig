@@ -1,0 +1,68 @@
+{% block menu %}
+{% endblock %}
+{% block body %}
+{% block fos_user_content %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Login | Everfail</title>
+    <link href="{{asset('bundles/everFailMain/css/960.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('bundles/everFailMain/css/reset.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('bundles/everFailMain/css/text.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('bundles/everFailMain/css/login.css')}}" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+    <img style= "position:relative; top:10px; left:205px;" src="{{asset('bundles/everFailMain/images/logo.png')}}"></img>
+
+    <div style= "position:relative; top:-50px; left:0px;" class=container_16>
+        <div  class="grid_6 prefix_5 suffix_5">
+            <h1>Welcome to Everfail...</h1>
+            <div id="login">
+                <!--<p class="error">This is when something is wrong!</p>-->  
+
+
+
+                <form action="{{ path("account_login") }}" method="POST">
+                    <label><strong>Username</strong>
+                        <input type="text" id="username" name="username" class="inputText" required="required" />
+                    </label>
+                    <label><strong>Password</strong>
+                        <input type="password" id="password" name="password" class="inputText" required="required" />
+                    </label>
+                    <label>
+                    <input type="checkbox" id="remember" name="remember" value="on" />
+                    </label>
+                    
+                    <label for="remember">{{ 'remember_me'|trans }}</label><t> </t>
+                   
+                    <input class ="black_button" type="submit" id="_submit" name="_submit" value="{{ 'Sign in'|trans }}" />
+
+                    </p>
+                    </h4>
+                    <p align="center">
+                        Not Registered?
+                        <a href="{{ path("account_register") }}">Sign Up</a>
+                    </p> </form>
+
+
+
+
+
+                <br clear="all" />
+            </div>
+            <div id="forgot">
+                <a href="#" class="forgotlink"><span>Forgot your username or password?</span></a></div>
+        </div>
+    </div>
+    <br clear="all" />
+</body>
+</html>
+
+
+
+{% endblock fos_user_content %}
+{% endblock %}
+
+
+
+

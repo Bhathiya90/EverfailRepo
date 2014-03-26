@@ -20,6 +20,9 @@ class AppKernel extends Kernel
             
             new \FOS\UserBundle\FOSUserBundle(),
             new EverFail\UserAuthBundle\EverFailUserAuthBundle(),
+           new \EverFail\RegistrationBundle\EverFailRegistrationBundle(),
+           
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

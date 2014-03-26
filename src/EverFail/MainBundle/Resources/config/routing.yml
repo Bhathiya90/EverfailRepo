@@ -1,6 +1,6 @@
 ever_fail_main_homepage:
     pattern:  /
-    defaults: { _controller: EverFailMainBundle:Default:index }
+    defaults: { _controller: EverFailRegistrationBundle:Login:login }
 ever_fail_main_homepage2:
     pattern:  /index.html
     defaults: { _controller: EverFailMainBundle:Default:index }

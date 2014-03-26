@@ -1,9 +1,69 @@
-{%extends "::base.html.twig"%}
-{%block body%}
-<a href="{{path('customer')}}">Customer</a><br/>
-<a href="{{path('category')}}">Category</a><br/>
-<a href="{{path('part')}}">Part</a><br/>
-<a href="{{path('service')}}">Service</a><br/>
-<a href="{{path('car')}}">Cars</a><br/>
-<a href="{{path('invoice')}}">Invoice</a>
-{%endblock%}
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+<div class="grid_9">
+    <h1 class="dashboard">Dashboard</h1>
+</div>
+<div class="grid_6" id="eventbox"><a href="#" class="inline_calendar">You don't have any events for today! Yay!</a>
+    <div class="hidden_calendar"></div>
+</div>
+<div id="portlets">
+    <div class="column">
+        <div class="portlet">
+            <div class="portlet-header"><img src="{{asset('bundles/everFailMain/images/icons/feed.gif')}}" width="16" height="16" alt="Feeds" />Latest News</div>
+            <div class="portlet-content">
+                <ul class="news_items">
+                    <li>
+                     <b>Posted on March 1, 2014 by jerry</b>   
+                      Our shop has received 100% scores from AAA for the first 2 months this year. Let’s keep going!   
+                    </li>
+                    </br>
+                    <li>
+                     <b>Posted on February 8, 2014 by jerry</b>   
+                     With the recent cold weather we’ve seen a lot of cars needing a new battery. Most people know that the 
+                     cold is hard on a battery but did you know that the other factor that takes out batteries is high heat? 
+                     Our 2 busy times of the year with changing batteries? The coldest part of the Winter and the hottest…  
+                     <a>Read more</a>
+                    </li>
+                    </br>
+                    <li>
+                     <b>Posted on February 1, 2014 by jerry</b>   
+                     We’re taking our 2013 record of success into the new year! 
+                    </li>
+                    </br>
+                    <li>
+                     <b>Posted on January 24, 2014 by jerry </b>   
+                     The engine replacing the defective V-6 engine to the left is installed and close to being completed. 
+                     This V-6 shuffle is just about over. Hurray!
+                    </li>
+                    </br>
+                    <li>
+                     <b>Posted on January 18, 2014 by jerry  </b>   
+                     Skateboarding, a sport popular with many humans, is fast becoming popular with some cars. Okay that’s 
+                     not exactly true… In reality this is what happens when you drive a little too fast on icy roads. This 
+                     car was making a left turn when it slid into the curb and damaged the right front suspension. The car is 
+                     temporarily being stored on a dolly…<a>Read more</a>
+                    </li>
+                    </ul>
+                <a href="#">&raquo; View old news items</a>
+            </div>
+        </div> 
+         <div class="portlet">
+            <div class="portlet-header">Post your own comments</div>
+
+            <div class="portlet-content">
+                <form id="form1" name="form1" method="post" action="">
+                    <label>Topic</label>
+                    <input type="text" name="textfield" id="textfield" class="smallInput" />
+                    <label>Content</label>
+                    <textarea name="textarea" cols="45" rows="3" class="smallInput" id="textarea"></textarea>
+                    <a class="button"><span>Submit Enquery</span></a>
+                </form>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {% endblock %}

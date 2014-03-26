@@ -1,0 +1,7 @@
+parameters:
+#    volunteer_management_system_registration.example.class: EverFail\RegistrationBundle\Example
+
+services:
+#    volunteer_management_system_registration.example:
+#        class: %volunteer_management_system_registration.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

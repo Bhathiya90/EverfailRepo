@@ -1,89 +1,64 @@
-<!DOCTYPE html>
 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Everfail | home</title>
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/everFailMain/css/960.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/everFailMain/css/reset.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/everFailMain/css/text.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{asset('bundles/everFailMain/css/blue.css')}}" />
+    <link type="text/css" href="{{asset('bundles/everFailMain/css/smoothness/ui.css')}}" rel="stylesheet" />  
+    <script type="text/javascript" src="../../ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/blend/jquery.blend.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/ui.core.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/ui.sortable.js')}}"></script>    
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/ui.dialog.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/ui.datepicker.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/effects.js')}}"></script>
+    <script type="text/javascript" src="{{asset('bundles/everFailMain/js/flot/jquery.flot.pack.js')}}"></script>
+    <script id="source" language="javascript" type="text/javascript" src="{{asset('bundles/everFailMain/js/graphs.js')}}"></script>
 
-<!DOCTYPE HTML>
-<!-- Website template by freewebsitetemplates.com -->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome EverFail!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-        <link rel="stylesheet" href="/EverfailRepo/web/bundles/everfailmain/css/style.css" type="text/css">
-        <link rel="stylesheet" href="{{asset('bundles/everFailMain/css/bootstrap.css')}}" type="text/css">
-        <link rel="stylesheet" href="{{asset('bundles/everFailMain/css/bootstrap-responsive.css')}}" type="text/css">
-        <style type="text/css">
-                body {
-                    padding-top: 40px;
-                    padding-bottom: 40px;
-                    background-color: #f5f5f5;
-                }
+</head>
 
-                .form-signin {
-                    max-width: 300px;
-                    padding: 19px 29px 29px;
-                    margin: 0 auto 20px;
-                    background-color: #fff;
-                    border: 1px solid #e5e5e5;
-                    -webkit-border-radius: 5px;
-                    -moz-border-radius: 5px;
-                    border-radius: 5px;
-                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                    box-shadow: 0 1px 2px rgba(0,0,0,.05);
-                }
-                .form-signin .form-signin-heading,
-                .form-signin .h1,
-                .form-signin .checkbox {
-                    margin-bottom: 10px;
-                }
-                .form-signin input[type="text"],
-                .form-signin input[type="password"]
-                .form-signin input{
-                    font-size: 16px;
-                    height: auto;
-                    margin-bottom: 15px;
-                    padding: 7px 9px;
-                }
-
-            </style>
-        </head>
-        <body>
-            <div id="header">
-                <div>
-                    <div class="logo">
-                        <a href="index.html">Ever Fail</a>
-                    </div>
-                    <ul id="navigation">
-                        <li class="active">
-                            <a href="{{path('ever_fail_main_homepage')}}">Home</a>
-                        </li>
-
-                    </ul>
-                </div>
+<body>
+    <!-- WRAPPER START -->
+    <img style= "position:relative; top:10px; left:205px;" src="{{asset('bundles/everFailMain/images/logo.png')}}"></img>
+    <div class="container_16" id="wrapper">	
+        <div class="grid_8" style="position:relative; top:-25px; right:-480px;">
+            <!-- USER TOOLS START -->
+            <div id="user_tools"><span><a href="#" class="mail">(1)</a> You have logged in as <a href="#">Username</a>  | <a href="#">Logout</a></span></div>
+        </div>
+        <!-- USER TOOLS END -->    
+        <div class="grid_16" id="header" >
+            <!-- MENU START -->
+            <div id="menu">
+                <ul class="group" id="menu_group_main">
+                    <li class="item first" id="one"><a href="{{ path("ever_fail_main_homepage2") }}" class="main"><span class="outer"><span class="inner dashboard">Dashboard</span></span></a></li>
+                    <li class="item middle" id="two"><a href="{{ path("customer") }}" class="main"><span class="outer"><span class="inner content">Customer</span></span></a></li>
+                    <li class="item middle" id="three"><a href="{{ path("category") }}" ><span class="outer"><span class="inner reports png">Category</span></span></a></li>
+                    <li class="item middle" id="four"><a href="{{ path("part") }}" class="main"><span class="outer"><span class="inner users">Parts</span></span></a></li>
+                    <li class="item middle" id="five"><a href="{{ path("service") }}" class="main"><span class="outer"><span class="inner media_library">Service</span></span></a></li>        
+                    <li class="item middle" id="six"><a href="{{ path("car") }}"  class="main"><span class="outer"><span class="inner event_manager">Cars</span></span></a></li>        
+                    <li class="item middle" id="seven"><a href="{{ path("invoice") }}" class="main"><span class="outer"><span class="inner newsletter">Invoice</span></span></a></li>        
+                    <li class="item last" id="eight"><a href="{{ path("vendor") }}" class="main"><span class="outer"><span class="inner settings">Vendor</span></span></a></li>        
+                </ul>
             </div>
+            <!-- MENU END -->
+        </div>
+        <div class="grid_16" id="content">
+     {% block body %}
 
-            <div id="adbox">
-                <div class="clearfix">
-                    <!--<img src="/EverfailRepo/web/bundles/everfailmain/images/box.png" alt="Img" height="342" width="368">-->
-                    <div>
-                    {% block body %}
-                            
                     {% endblock %}
-                    {% block javascripts %}{% endblock %}
-                        </div>
 
-                    </div>
-                </div>
-                <div id="footer">
-                    <div class="clearfix">
-                        <div id="connect">
-                            <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
-                        </div>
-                        <p>
-                            © PentoZide software solutions. All Rights Reserved.
-                        </p>
-                    </div>
-                </div>
-            </body>
-        </html>
+
+
+
+        </div>
+        <div class="clear"> </div>
+    </div>
+    <!-- WRAPPER END -->
+    <!-- FOOTER START -->
+    <div class="container_16" id="footer">
+        Designed by <a href="#">Pentozide</a></div>
+    <!-- FOOTER END -->
+</body>
+</html>
