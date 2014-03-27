@@ -1,55 +1,51 @@
 {% extends '::base.html.twig' %}
-{% block title %}Volma - Registration{% endblock %}
+{% block title %}EverFail - Registration{% endblock %}
 {% block menu %}
 {% endblock %}
 {% block body %}
 
-<h1 align ="center"> Your username or email exists in our system </h1>
- <section class="container">
+<h1 align ="center"> Your username or email or nic exists in our system </h1>
+<section class="container">
     <div class="login">
-      <h1>Register</h1>
+            <h1>Register</h1>
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{form_row(form.user.username)}}        
-        <br>
+            <br>
         {{form_row(form.user.password)}}        
-        <br><br>
-        
+            <br><br>
+
         {{form_row(form.user.firstname)}}        
-        <br>
+            <br>
         {{form_row(form.user.lastname)}}        
-        <br>
+            <br>
         {{form_row(form.user.nic)}}        
-        <br><br>
-        
+            <br><br>
+
         {{form_label(form.user.gender)}}<br>
         {{form_widget(form.user.gender)}}
-        <br>
+            <br>
         {{form_label(form.user.dateOfBirth)}}<br>
         {{form_widget(form.user.dateOfBirth)}}
-        <br><br>
-        
+            <br><br>
+
         {{form_row(form.user.email)}}        
-        <br>
-    
-      
-        <p align="center">
+            <br>
+
+
+            <p align="center">
         {{form_widget(form.terms)}}
         {{form_label(form.terms)}}
-        <br><br>
-        
-        {{form_widget(form.user.submit)}}
-         </p>
-        {{ form_end(form) }}
-        
-        
- 
-        
- 
-    </div>
-        
+                <br><br>
 
-  </section>
+        {{form_widget(form.user.submit)}}
+            </p>
+        {{ form_end(form) }}
+
+        </div>
+
+
+</section>
 
 
 {% endblock %}

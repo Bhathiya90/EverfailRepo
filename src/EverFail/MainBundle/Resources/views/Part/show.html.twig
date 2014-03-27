@@ -1,9 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Part</h1>
+<div class="grid_9">
+    <h1 class="part">Part List</h1>
+</div>
+<div id="portlets">
+    <div class="column">
+        <b>List of Available Parts</b>
     <br/>
-    <table class="table">
+    <table width="100%" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
         <tbody>
             <tr>
                 <th>{{ partName }}</th>
@@ -27,6 +32,9 @@
             Edit
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+  
 </ul>
+      {{ form(delete_form) }}
+    </div>
+    </div>
 {% endblock %}

@@ -1,5 +1,5 @@
 {% extends '::base.html.twig' %}
-{% block title %}Volma - Registration{% endblock %}
+{% block title %}EverFail - Registration{% endblock %}
 {% block menu %}
 {% endblock %}
 {% block body %}
@@ -8,6 +8,7 @@
  <section class="container">
     <div class="login">
       <h1>Register</h1>
+      
         {{ form_start(form) }}
         {{ form_errors(form) }}
         {{form_row(form.user.username)}}        
@@ -41,12 +42,6 @@
         {{form_widget(form.user.submit)}}
          </p>
         
-        
- 
-        
- 
-        
- 
     </div>
         
 

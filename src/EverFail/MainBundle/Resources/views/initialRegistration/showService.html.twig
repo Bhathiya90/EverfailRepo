@@ -1,0 +1,33 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<h1>Service</h1>
+<br/>
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ serviceDate }}</th>
+			<td>{{ entity.serviceDate|date('Y-m-d') }}</td>
+		</tr>
+		<tr>
+			<th>{{ serviceCharge }}</th>
+			<td>{{ entity.serviceCharge }}</td>
+		</tr>
+		<tr>
+			<th>{{ note }}</th>
+			<td>{{ entity.note }}</td>
+		</tr>
+                <tr>
+			<th>{{ car }}</th>
+			<td>{{ entity.car }}</td>
+		</tr>
+                <tr>
+			<th>{{ customer }}</th>
+			<td>{{ entity.cust }}</td>
+		</tr>
+                
+	</tbody>
+</table>
+<a href="{{ path('invoice_new', { 'ServId':entity.getId() }) }}">Create a Invoice</a>
+
+{% endblock %}

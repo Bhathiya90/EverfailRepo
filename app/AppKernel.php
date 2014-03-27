@@ -18,8 +18,6 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new EverFail\MainBundle\EverFailMainBundle(),
             
-            new \FOS\UserBundle\FOSUserBundle(),
-            new EverFail\UserAuthBundle\EverFailUserAuthBundle(),
            new \EverFail\RegistrationBundle\EverFailRegistrationBundle(),
            
             

@@ -1,18 +1,25 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<div class="form-signin">
-    <h1>Category edit</h1>
-    <br/>
-    {{ form(edit_form) }}
+<div class="grid_9">
+<h1 class="category">Category List</h1>
 </div>
+<div id="portlets">
+    <div class="column">
+        <b>Edit Category</b>
+        <br/>
+    {{ form(edit_form) }}
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+        <ul class="news_items">
+            <li>
+                <a href="{{ path('category') }}">
+                    Back to the list
+                </a>
+            </li>
+
+        </ul>
+    {{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}

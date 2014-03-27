@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Car</h1>
+    <br/>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>{{ regNumber }}</th>
+                <td>{{ car.regNumber }}</td>
+            </tr>
+            <tr>
+                <th>{{ model }}</th>
+                <td>{{ car.model }}</td>
+            </tr>
+            <tr>
+                <th>{{ manufactureYear }}</th>
+                <td>{{ car.manufactureYear|date('Y-m-d') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="{{ path('service_new', { 'CustId':customer.getId(),'CarId':car.getId() }) }}">Go to Service</a>
+        
+{% endblock %}
+

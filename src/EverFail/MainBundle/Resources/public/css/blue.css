@@ -26,6 +26,13 @@ a.approve_inline { background:url(../images/icons/action_check.gif) no-repeat le
 *******************************************************************************/
 h1 { font-size:22px; color: #1b486a; display: block; margin-top: 10px;}
 h1.dashboard { background:url(../images/icon_dashboard_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.car{background:url(../images/car_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.category{background:url(../images/category_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.customer{background:url(../images/customer_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.invoice{background:url(../images/invoice_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.part{background:url(../images/part_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.service{background:url(../images/service_small.gif) left 3px no-repeat; padding-left:35px;}
+h1.vendor{background:url(../images/vendor_small.gif) left 3px no-repeat; padding-left:35px;}
 h1.content_edit { background:url(../images/icon_content_small.gif) left 3px no-repeat; padding-left:35px;}
 h2 { font-size:18px !important; }
 h3 { font-size: 13px !important; }

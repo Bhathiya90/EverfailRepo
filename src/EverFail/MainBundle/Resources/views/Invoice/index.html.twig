@@ -1,42 +1,44 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Invoice List</h1>
-    <ul>
+<div class="grid_9">
+    <h1 class="invoice">Invoice List</h1>
+</div>
+<div id="portlets">
+    <div class="column">
+        <b>Available invoices</b>
+
+        <br/>
+        <div class="sign-in">
+    {{form(form)}}
+        </div>
+        <br/>
+
+        <table width="100%" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
+            <thead>
+                <tr>
+                    <th>{{ paymentDate }}</th>
+                    <th>{{ paymentStatus }}</th>
+                    <th>{{ paymentMethod }}</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('invoice_show', { 'id': entity.id }) }}">{{ entity.paymentDate|date('Y-m-d') }}</a></td>
+                    <td>{{ entity.paymentStatus }}</td>
+                    <td>{{ entity.paymentMethod }}</td>
+                    <td colspan="4"><a href="#" class="edit_inline">Edit</a><a href="#" class="delete_inline">Delete</a><a href="{{ path('invoice_show', { 'id': entity.id }) }}" class="approve_inline">View</a></td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        <ul>
             <a href="{{ path('invoice_new') }}">
                 <h3>Create an Invoice</h3>
             </a>
-    </ul>
-    <br/>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ paymentDate }}</th>
-                <th>{{ paymentStatus }}</th>
-                <th>{{ paymentMethod }}</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('invoice_show', { 'id': entity.id }) }}">{{ entity.paymentDate|date('Y-m-d') }}</a></td>
-                <td>{{ entity.paymentStatus }}</td>
-                <td>{{ entity.paymentMethod }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('invoice_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('invoice_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+        </ul>
+    </div>
+</div>
     {% endblock %}

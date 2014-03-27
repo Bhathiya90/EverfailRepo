@@ -5,6 +5,7 @@ namespace EverFail\RegistrationBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use EverFail\RegistrationBundle\Session\Login;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class LoginController extends Controller {
 
@@ -14,7 +15,7 @@ class LoginController extends Controller {
 
             $session->clear();
             $username = $request->get('username');
-            $password = $request->get('password');
+            $password = sha1($request->get('password'));
             $remember = $request->get('remember');
             $em = $this->getDoctrine()->getEntityManager();
             $repository = $em->getRepository('EverFailRegistrationBundle:User');
@@ -23,13 +24,13 @@ class LoginController extends Controller {
 
             if ($user) {
                 $session->set('id', $user->getId());
-                if ($remember == 'on') {
 
                     $login = new Login();
                     $login->setUsername($username);
-                    $login->setPassword($password);
+                    $login->setPassword(sha1($password));
                     $session->set('login', $login);
-                }
+                   
+                
                 return $this->redirect($this->generateUrl('welcome', $paramters = array('id' => $user->getId())));
             } else {
                 return $this->render('EverFailRegistrationBundle:Login:login.html.twig', array('name' => 'Login Failed'));
@@ -56,6 +57,7 @@ class LoginController extends Controller {
     public function logoutAction() {
         $session = $this->getRequest()->getSession();
         $session->clear();
+        
         return $this->render('EverFailRegistrationBundle:Login:login.html.twig', array('id' => ''));
     }
 

@@ -1,7 +1,3 @@
-ever_fail_user_auth:
-    resource: "@EverFailUserAuthBundle/Resources/config/routing.yml"
-    prefix:   /
-
 ever_fail_main:
     resource: "@EverFailMainBundle/Resources/config/routing.yml"
     prefix:   /

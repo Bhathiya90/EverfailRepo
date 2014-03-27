@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+<h1>Car List</h1>
+<br/>
+<div class="sign-in">
+    {{form(form)}}
+    </div>
+    <br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ regNumber }}</th>
+                <th>{{ model }}</th>
+                <th>{{ manufactureYear }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td><a href="{{ path('car_show', { 'id': entity.id }) }}">{{ entity.regNumber }}</a></td>
+                    <td>{{ entity.model }}</td>
+                    <td>{% if entity.manufactureYear %}{{ entity.manufactureYear|date('Y-m-d') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('car_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('car_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    {% endblock %}

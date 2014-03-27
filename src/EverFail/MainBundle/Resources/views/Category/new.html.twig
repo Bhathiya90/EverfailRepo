@@ -1,17 +1,22 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<div class="form-signin">
-    <h1>Category creation</h1>
-    <br/>
-    {{ form(form) }}
+<div class="grid_9">
+    <h1 class="category">Category List</h1>
 </div>
+<div id="portlets">
+    <div class="column">
+        <b>New Categoryy</b>
+        <br/>
+    {{ form(form) }}
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+        <ul class="news_items">
+            <li>
+                <a href="{{ path('category') }}">
+                    Back to the list
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>    
 {% endblock %}

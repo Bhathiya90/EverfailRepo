@@ -1,41 +1,42 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Customer List</h1>
-    <ul>
-            <a href="{{ path('customer_new') }}">
-                <h3>Add a new Customer</h3>
-            </a>
-    </ul>
-    <br/>
+<div class="grid_9">
+    <h1 class="customer">Customer List</h1>
+</div>
+<div id="portlets">
+    <div class="column">
+        <b>List of Registered Customers<b>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ customerName }}</th>
-                <th>{{ customerEmail }}</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+                <br/>
+                <div class="sign-in">
+        {{form(form)}}
+                </div>
+                <br/>
+
+                <table width="100%" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
+                    <thead>
+                        <tr>
+                            <th>{{ customerName }}</th>
+                            <th>{{ customerEmail }}</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
         {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('customer_show', { 'id': entity.id }) }}">{{ entity.custName }}</a></td>
-                <td>{{ entity.email }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('customer_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('customer_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
+                        <tr>
+                            <td><a href="{{ path('customer_show', { 'id': entity.id }) }}">{{ entity.custName }}</a></td>
+                            <td>{{ entity.email }}</td>
+                            <td colspan="4"><a href="#" class="edit_inline">Edit</a><a href="#" class="delete_inline">Delete</a><a href="{{ path('customer_show', { 'id': entity.id }) }}" class="approve_inline">View</a></td>
+                        </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
-        
+                    </tbody>
+                </table>
+                <ul>
+                    <a href="{{ path('customer_new') }}">
+                        <h3>Add a new Customer</h3>
+                    </a>
+                </ul>
+                </div>
+                </div>
     {% endblock %}

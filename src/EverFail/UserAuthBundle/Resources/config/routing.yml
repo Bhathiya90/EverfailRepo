@@ -1,3 +1,0 @@
-ever_fail_user_auth_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: EverFailUserAuthBundle:Default:index }

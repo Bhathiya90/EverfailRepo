@@ -9,57 +9,77 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ServiceType extends AbstractType {
 
-	/**
-	 * @param FormBuilderInterface $builder
-	 * @param array $options
-	 */
-	public function buildForm(FormBuilderInterface $builder, array $options) {
-//		$em = $this->getDoctrine()->getManager();
-//		$qb = $em->getRepository('EverFailMainBundle:Category')->createQueryBuilder('n');
-//		$result = $qb->where('n.stock > 0')->getQuery()->getResult();
-//
-//		//add category list
-//		$con = Doctrine::getInstance()->connection();
-//		$st = $con->execute("SELECT name FROM Category where Stock > 0");
-//		$result = $st->fetchAll();
+    protected $car;
+    protected $customer;
 
-		$builder
-				->add('serviceDate', null, array('label' => 'Date'))
-				->add('serviceCharge', null, array('label' => 'Charge (Rs.)'))
-				->add('note', null, array('label' => 'Note'))
-				->add('car', null, array(
-					'label' => 'Car',
-					'empty_value' => false))
-				->add('cust', null, array(
-					'label' => 'Customer',
-					'empty_value' => false))
-				->add('invoice', null, array('label' => 'Invoice'))
-				->add('category', 'entity', array(
-					'class' => 'EverFailMainBundle:Category',
-					'expanded' => true,
-					'label' => 'Parts Used',
-					'multiple' => true,
-					'mapped' => false,
-					'query_builder' => function(EntityRepository $er) {
-						return $er->createQueryBuilder('u')
-								->where('u.stock > 0');
-					},));
-	}
+    public function __construct($customer, $car) {
+        $this->car = $car;
+        $this->customer = $customer;
+    }
 
-	/**
-	 * @param OptionsResolverInterface $resolver
-	 */
-	public function setDefaultOptions(OptionsResolverInterface $resolver) {
-		$resolver->setDefaults(array(
-			'data_class' => 'EverFail\MainBundle\Entity\Service'
-		));
-	}
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options) {
+        $builder
+                ->add('serviceDate', 'date', array('label' => 'Date',
+                    'widget' => 'single_text'))
+                ->add('serviceCharge', null, array('label' => 'Charge (Rs.)',
+                    'attr' => array('pattern' => '[0-9]+(.[0-9]{2})?')))
+                ->add('note', null, array('label' => 'Note'))
+                ->add('car', 'entity', array('label' => 'Car',
+                    'class' => 'EverFailMainBundle:Car',
+                    'read_only' => true,
+                    'data' => $this->car))
+                ->add('cust', 'entity', array('label' => 'Customer',
+                    'class' => 'EverFailMainBundle:Customer',
+                    'read_only' => true,
+                    'data' => $this->customer))
+//                ->add('invoice', 'entity', array(
+//                    'class' => 'EverFailMainBundle:Invoice',
+//                    'expanded' => false,
+//                    'label' => 'Invoice',
+//                    'multiple' => false,
+//                    'required' => false,
+//                    'empty_value' => '[not issued]',
+//                    'empty_data' => null,
+//                    'query_builder' => function(EntityRepository $er) {
+//                        return $er->createQueryBuilder('i')
+//                                ->select('i')
+//                                ->where('i.id NOT IN (SELECT IDENTITY(s.invoice)
+//									FROM EverFailMainBundle:Service s
+//									WHERE s.invoice IS NOT NULL)');
+//                    }
+//                ))
+                ->add('category', 'entity', array(
+                    'class' => 'EverFailMainBundle:Category',
+                    'expanded' => false,
+                    'label' => 'Parts Used',
+                    'multiple' => true,
+                    'mapped' => false,
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('u')
+                                ->where('EXISTS (SELECT p FROM EverFailMainBundle:Part p
+									WHERE p.category = u AND p.service IS NULL)');
+                    }
+        ));
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getName() {
-		return 'everfail_mainbundle_service';
-	}
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver) {
+        $resolver->setDefaults(array(
+            'data_class' => 'EverFail\MainBundle\Entity\Service'
+        ));
+    }
+
+    /**
+     * @return string
+     */
+    public function getName() {
+        return 'everfail_mainbundle_new_service';
+    }
 
 }

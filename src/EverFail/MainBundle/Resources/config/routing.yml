@@ -24,12 +24,65 @@ EverFailMainBundle_service:
         prefix:   /service
 EverFailMainBundle_vendor:
         resource: "@EverFailMainBundle/Resources/config/routing/vendor.yml"
-        prefix:   /vendor
-       
+        prefix:   /vendor       
+
+		
+
 Search_Car:
-        pattern:  /carSearch
+        pattern:  /{CustId}/carSearch
         defaults: { _controller: "EverFailMainBundle:InitialRegistration:registerCar" }
         
 Search_Customer:
         pattern:  /customerSearch
         defaults: { _controller: "EverFailMainBundle:InitialRegistration:registerCustomer" }
+        
+wizard_car_show:
+        pattern: /{CustId}/{CarId}/carShow
+        defaults: { _controller: "EverFailMainBundle:InitialRegistration:showCar" }
+       
+car_new:
+    pattern:  /{CustId}/newCar
+    defaults: { _controller: "EverFailMainBundle:Car:new" }
+    
+service_new:
+    pattern:  /{CustId}/{CarId}/newService
+    defaults: { _controller: "EverFailMainBundle:Service:new" }
+
+
+Search_Category:
+        pattern:  /{VenId}/categorySearch
+        defaults: { _controller: "EverFailMainBundle:PartsPurchase:registerCategory" }
+        
+Search_Vendor:
+        pattern:  /vendorSearch
+        defaults: { _controller: "EverFailMainBundle:PartsPurchase:registerVendor" }
+        
+wizard_category_show:
+        pattern: /{VenId}/{CatId}/categoryShow
+        defaults: { _controller: "EverFailMainBundle:PartsPurchase:showCategory" }
+
+wizard_service_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EverFailMainBundle:InitialRegistration:showService" }
+       
+category_new:
+    pattern:  /{VenId}/newCategory
+    defaults: { _controller: "EverFailMainBundle:Category:new" }
+    
+part_new:
+    pattern:  /{VenId}/{CatId}/newPart
+    defaults: { _controller: "EverFailMainBundle:Part:new" }
+
+part_create:
+    pattern:  /{VenId}/{CatId}/create
+    defaults: { _controller: "EverFailMainBundle:Part:create" }
+    requirements: { _method: post }
+
+invoice_new:
+    pattern:  /{ServId}/new
+    defaults: { _controller: "EverFailMainBundle:Invoice:new" }
+
+invoice_create:
+    pattern:  /{ServId}/create
+    defaults: { _controller: "EverFailMainBundle:Invoice:create" }
+    requirements: { _method: post }

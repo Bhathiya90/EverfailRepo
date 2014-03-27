@@ -1,40 +1,48 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Category</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ categoryName }}</th>
-                <td>{{ entity.categoryName }}</td>
-            </tr>
-            <tr>
-                <th>{{ description }}</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>{{ minStock }}</th>
-                <td>{{ entity.minStock }}</td>
-            </tr>
-            <tr>
-                <th>{{ stock }}</th>
-                <td>{{ entity.stock }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="grid_9">
+    <h1 class="category">Category List</h1>
+</div>
+<div id="portlets">
+    <div class="column">
+        <b>Available Categoryy</b>
+        <br/>
+        <table width="100%" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
+            <tbody>
+                <tr>
+                    <th>{{ categoryName }}</th>
+                    <td>{{ entity.categoryName }}</td>
+                </tr>
+                <tr>
+                    <th>{{ description }}</th>
+                    <td>{{ entity.description }}</td>
+                </tr>
+                <tr>
+                    <th>{{ minStock }}</th>
+                    <td>{{ entity.minStock }}</td>
+                </tr>
+                <tr>
+                    <th>{{ stock }}</th>
+                    <td>{{ entity.stock }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('category') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('category_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <ul class="news_items">
+            <li>
+                <a href="{{ path('category') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('category_edit', { 'id': entity.id }) }}">
+                    Edit
+                </a>
+            </li>
+
+        </ul>
+       {{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}

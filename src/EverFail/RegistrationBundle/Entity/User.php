@@ -100,7 +100,7 @@ class User
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = sha1($password);
     
         return $this;
     }
@@ -112,7 +112,7 @@ class User
      */
     public function getPassword()
     {
-        return $this->password;
+        return sha1($this->password);
     }
 
     /**

@@ -19,8 +19,6 @@ class CategoryType extends AbstractType
             ->add('description', null, array('label' => 'Description'))
             ->add('minStock', 'integer', array('label' => 'Minimum Stock',
                 'attr'=>array('min'=>'0')))
-            ->add('stock', 'integer', array('label' => 'Available Stock',
-                'attr'=>array('min'=>'0')))
         ;
     }
     

@@ -2,17 +2,23 @@
 
 {% block body -%}
 <div class="form-signin">
-    <h1>Part edit</h1>
-    <br/>
+    <div class="grid_9">
+        <h1 class="part">Part List</h1>
+    </div>
+    <div id="portlets">
+        <div class="column">
+            <b>Edit Parts</b>
+            <br/>
     {{ form(edit_form) }}
-</div>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('part') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+            <ul class="news_items">
+                <li>
+                    <a href="{{ path('part') }}">
+                        Back to the list
+                    </a>
+                </li>
+            </ul>
+     {{ form(delete_form) }}
+        </div>
+    </div>
 {% endblock %}

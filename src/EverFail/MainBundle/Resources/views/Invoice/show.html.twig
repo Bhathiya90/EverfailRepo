@@ -1,36 +1,44 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Invoice</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ paymentDate }}</th>
-                <td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>{{ paymentStatus }}</th>
-                <td>{{ entity.paymentStatus }}</td>
-            </tr>
-            <tr>
-                <th>{{ paymentMethod }}</th>
-                <td>{{ entity.paymentMethod }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="grid_9">
+    <h1 class="invoice">Invoice List</h1>
+</div>
+<div id="portlets">
+    <div class="column">
+        <b>Available invoice</b>
+        <br/>
+        <table width="100%" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
+            <tbody>
+                <tr>
+                    <th>{{ paymentDate }}</th>
+                    <td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>{{ paymentStatus }}</th>
+                    <td>{{ entity.paymentStatus }}</td>
+                </tr>
+                <tr>
+                    <th>{{ paymentMethod }}</th>
+                    <td>{{ entity.paymentMethod }}</td>
+                </tr>
+            </tbody>
+        </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('invoice') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('invoice_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <ul class="news_items">
+            <li>
+                <a href="{{ path('invoice') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('invoice_edit', { 'id': entity.id }) }}">
+                    Edit
+                </a>
+            </li>
+
+        </ul>
+        {{ form(delete_form) }}
+    </div>
+</div>
 {% endblock %}
